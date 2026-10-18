@@ -9,7 +9,7 @@ void main() async {
   // Initialize timezones
   tz.initializeTimeZones();
 
-  // Initialize notifications
+  // Initialize notifications (works on mobile + desktop)
   await NotificationService().init();
 
   runApp(const AzanApp());
@@ -21,7 +21,7 @@ class AzanApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Islam Azan Desktop',
+      title: 'Islam Azan',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -29,7 +29,6 @@ class AzanApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
         useMaterial3: true,
-        fontFamily: 'Roboto',
       ),
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(

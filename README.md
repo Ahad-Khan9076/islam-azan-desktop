@@ -1,17 +1,21 @@
-# Islam Azan Desktop
+# Islam Azan (Desktop + Mobile)
 
-A clean Flutter **desktop** Azan (Adhan) reminder app for Windows, macOS, and Linux.
+A clean Flutter **Azan (Adhan) reminder app** that works on:
 
-It calculates accurate Islamic prayer times offline and shows desktop notifications when it's time to pray.
+- **Desktop** → Windows, macOS, Linux
+- **Mobile** → Android & iOS
+
+It calculates accurate Islamic prayer times offline and shows notifications when it's time to pray.
 
 ## Features
 
 - Accurate prayer times using `adhan_dart` (Karachi method + Hanafi by default)
 - Works fully offline after setup
-- Local desktop notifications (Windows / macOS / Linux)
+- Local notifications on all platforms
 - Save your location (latitude, longitude, timezone)
-- Simple and modern UI
 - Next prayer countdown
+- Simple and modern Material 3 UI
+- Works on both mobile and desktop from the same codebase
 
 ## Getting Started
 
@@ -26,32 +30,47 @@ cd islam-azan-desktop
 flutter pub get
 ```
 
-### 3. Enable desktop support (if needed)
+### 3. Generate platform folders (important)
 ```bash
-flutter create --platforms=windows,macos,linux .
+flutter create --platforms=android,ios,windows,macos,linux .
 ```
 
 ### 4. Run the app
+
+**Mobile:**
 ```bash
-# Windows
+flutter run -d android
+# or
+flutter run -d ios
+```
+
+**Desktop:**
+```bash
 flutter run -d windows
-
-# macOS
 flutter run -d macos
-
-# Linux
 flutter run -d linux
 ```
 
-## How to set your location
+## First Time Setup
 
-1. Open the **Settings** screen from the app
-2. Enter your **Latitude** and **Longitude**
-3. Choose your **Timezone** (example: `Asia/Karachi`)
-4. Select calculation method and madhab if needed
+1. Open the app
+2. Go to **Settings**
+3. Enter your **Latitude**, **Longitude** and **Timezone**
+   - Example for Karachi: `24.8607`, `67.0011`, `Asia/Karachi`
+4. Choose calculation method and madhab if needed
 5. Save
 
 You can find coordinates of any city on Google Maps or https://www.latlong.net
+
+## Android Notes
+
+- On Android 13+ the app will request notification permission automatically.
+- For exact prayer time alarms on Android 12+, the app requests the necessary permissions.
+
+## iOS Notes
+
+- The app will ask for notification permission the first time.
+- Make sure you allow notifications for the best experience.
 
 ## Default Settings
 
@@ -62,9 +81,10 @@ You can find coordinates of any city on Google Maps or https://www.latlong.net
 ## Packages Used
 
 - `adhan_dart` → Prayer time calculation
-- `flutter_local_notifications` → Desktop notifications
+- `flutter_local_notifications` → Notifications (all platforms)
 - `timezone` → Correct timezone handling
 - `shared_preferences` → Save user settings
+- `permission_handler` → Request notification permissions on mobile
 - `intl` → Time formatting
 
 ## License
